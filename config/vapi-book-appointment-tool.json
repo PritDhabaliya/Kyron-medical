@@ -1,0 +1,38 @@
+{
+  "description": "Persist a Kyron Medical appointment after the patient confirms date, time, and doctor on the phone. Call this ONLY when the patient has agreed to a specific slot. Requires patient details from the linked web chat session (session_id in call metadata) OR pass doctor_id + patient fields if your flow collects them on the call.",
+  "name": "book_kyron_appointment",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "doctor_id": {
+        "type": "string",
+        "description": "UUID of the doctor from the system (preferred if known)."
+      },
+      "doctor_name": {
+        "type": "string",
+        "description": "Doctor display name if UUID unknown, e.g. Dr Smith, Dr Patel."
+      },
+      "appointment_date": {
+        "type": "string",
+        "description": "Date in YYYY-MM-DD format."
+      },
+      "appointment_time": {
+        "type": "string",
+        "description": "Time in 24h HH:MM, e.g. 09:00 or 14:30."
+      },
+      "send_sms_reminder": {
+        "type": "boolean",
+        "description": "True if the patient asked for SMS reminders."
+      },
+      "reason": {
+        "type": "string",
+        "description": "Optional short reason for visit."
+      },
+      "session_id": {
+        "type": "string",
+        "description": "Web chat session id if not already on the call metadata."
+      }
+    },
+    "required": ["appointment_date", "appointment_time"]
+  }
+}
