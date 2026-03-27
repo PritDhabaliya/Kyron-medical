@@ -6,7 +6,7 @@ colorTo: indigo
 sdk: docker
 app_port: 7860
 pinned: false
-short_description: Kyron Medical appointment API (Express) for chat, booking, and Vapi voice webhooks
+short_description: Kyron Medical scheduling API (Express + Vapi webhooks)
 ---
 
 # Kyron AI Assistant (MVP)
