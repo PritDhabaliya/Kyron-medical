@@ -1,3 +1,14 @@
+---
+title: Kyron Medical API
+emoji: 🏥
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+app_port: 7860
+pinned: false
+short_description: Kyron Medical appointment API (Express) for chat, booking, and Vapi voice webhooks
+---
+
 # Kyron AI Assistant (MVP)
 
 Production-oriented MVP for Kyron Medical: patients schedule appointments via **AI chat** or **voice call**, with confirmations sent by **email** (SendGrid) and optional **SMS** (Twilio).
