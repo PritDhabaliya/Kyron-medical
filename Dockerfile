@@ -7,7 +7,8 @@ RUN echo "=== HF build: base image ready ==="
 
 WORKDIR /app
 
-ENV NODE_ENV=production
+# Do NOT set NODE_ENV=production before `npm ci` — npm skips devDependencies
+# (TypeScript/tsc lives in devDependencies and is required for `npm run build`).
 ENV PORT=7860
 
 COPY package.json package-lock.json ./
@@ -26,6 +27,8 @@ RUN echo "=== HF build: npm ci starting (no output until done; often 5–15+ min
 RUN echo "=== HF build: tsc backend ===" \
   && npm --workspace backend run build \
   && echo "=== HF build: tsc done ==="
+
+ENV NODE_ENV=production
 
 RUN echo "=== HF build: npm prune ===" \
   && npm prune --omit=dev \
