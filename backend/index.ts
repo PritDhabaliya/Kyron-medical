@@ -66,9 +66,10 @@ async function start() {
     console.error("Database bootstrap failed:", error);
   }
 
-  app.listen(port, () => {
+  // Bind 0.0.0.0 so Docker / Hugging Face Spaces can route traffic to the container
+  app.listen(port, "0.0.0.0", () => {
     // eslint-disable-next-line no-console
-    console.log(`Backend listening on port ${port}`);
+    console.log(`Backend listening on http://0.0.0.0:${port}`);
     // eslint-disable-next-line no-console
     console.log(
       `[env] Loaded ${envPath} | VAPI_PHONE_NUMBER_ID=${process.env.VAPI_PHONE_NUMBER_ID ?? "(unset)"}`

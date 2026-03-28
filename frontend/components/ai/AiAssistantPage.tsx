@@ -257,13 +257,14 @@ export default function AiAssistantPage() {
       setAppointmentOptions(null);
       setSelectedSlot(null);
 
-      if (response.smsPrompt && typeof response.smsPrompt === "string") {
+      const smsPromptText = response.smsPrompt;
+      if (typeof smsPromptText === "string" && smsPromptText.length > 0) {
         setMessages((prev) => [
           ...prev,
           {
             id: crypto.randomUUID(),
             role: "assistant",
-            content: response.smsPrompt,
+            content: smsPromptText,
           },
         ]);
       }
